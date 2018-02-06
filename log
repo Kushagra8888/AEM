@@ -6,8 +6,8 @@ Running on prd-vcijtls01.bbtnet.com in /var/lib/jenkins/workspace/M-Platform_Pla
 [Pipeline] { (Checkout)
 Setting origin to ssh://gerrit.bbtnet.com:29418/aem-platform
 Fetching origin...
-Fetching changes from the remote Git repository
 [Pipeline] checkout
+Fetching changes from the remote Git repository
 Checking out Revision 5996a6e0440ee98daba5f851649d09dffed1c6e1 (develop)
 [Pipeline] readMavenPom
 [Pipeline] }
@@ -21,11 +21,11 @@ mvnHome = /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.3.
 [Pipeline] {
 [Pipeline] wrap
 provisioning config files...
-copy managed file [MyGlobalSettings] to file:/var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA@tmp/config1992209201323713090tmp
+copy managed file [MyGlobalSettings] to file:/var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA@tmp/config649630657299998716tmp
 [Pipeline] {
 [Pipeline] sh
 [M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA] Running shell script
-+ /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.3.x/apache-maven-3.3.9/bin/mvn -s /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA@tmp/config1992209201323713090tmp clean package
++ /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.3.x/apache-maven-3.3.9/bin/mvn -s /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA@tmp/config649630657299998716tmp clean package
 [INFO] Scanning for projects...
 [WARNING] 
 [WARNING] Some problems were encountered while building the effective model for com.bbt.platform:bbt-platform-core:bundle:1.0.0-SNAPSHOT
@@ -122,15 +122,15 @@ copy managed file [MyGlobalSettings] to file:/var/lib/jenkins/workspace/M-Platfo
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary:
 [INFO] 
-[INFO] BB&T Platform ...................................... SUCCESS [  0.044 s]
-[INFO] BB&T Platform Core ................................. SUCCESS [  3.264 s]
-[INFO] BB&T Platform UI ................................... SUCCESS [  2.758 s]
+[INFO] BB&T Platform ...................................... SUCCESS [  0.045 s]
+[INFO] BB&T Platform Core ................................. SUCCESS [  3.167 s]
+[INFO] BB&T Platform UI ................................... SUCCESS [  2.696 s]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 6.990 s
-[INFO] Finished at: 2018-02-06T18:29:00-05:00
-[INFO] Final Memory: 71M/842M
+[INFO] Total time: 6.828 s
+[INFO] Finished at: 2018-02-06T18:46:55-05:00
+[INFO] Final Memory: 71M/846M
 [INFO] ------------------------------------------------------------------------
 [Pipeline] }
 Deleting 2 temporary files
@@ -156,8 +156,8 @@ Modules: [core, ui]
 [Pipeline] echo
 Reading pom: core/pom.xml
 [Pipeline] readMavenPom
-[Pipeline] echo
 Found Module: bbt-platform-core, packaging is: bundle
+[Pipeline] echo
 [Pipeline] echo
 Reading pom: ui/pom.xml
 [Pipeline] readMavenPom
@@ -182,25 +182,25 @@ Found Module: bbt-platform-ui, packaging is: content-package
 > User-Agent: curl/7.29.0
 > Host: 192.168.189.36:4502
 > Accept: */*
-> Content-Length: 545156
+> Content-Length: 545048
 > Expect: 100-continue
-> Content-Type: multipart/form-data; boundary=----------------------------5f6d8df6416a
+> Content-Type: multipart/form-data; boundary=----------------------------327e64dfa43f
 > 
 < HTTP/1.1 100 Continue
 } [data not shown]
 < HTTP/1.1 200 OK
-< Date: Tue, 06 Feb 2018 23:29:06 GMT
+< Date: Tue, 06 Feb 2018 23:47:02 GMT
 < Content-Type: application/json; charset=utf-8
 < Content-Length: 112
 < 
 { [data not shown]
 
-100  532k  100   112  100  532k   1569  7461k --:--:-- --:--:-- --:--:-- 7498k
+100  532k  100   112  100  532k   1816  8633k --:--:-- --:--:-- --:--:-- 8725k
 * Connection #0 to host 192.168.189.36 left intact
 [Pipeline] readJSON
 [Pipeline] sh
 [M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA] Running shell script
-+ curl -vu ****:**** -X POST 'http://192.168.189.36:4502/crx/packmgr/service/.json/etc/packages/bbt/bbt-platform/bbt-platform-ui-1.0.0-SNAPSHOT.zip?cmd=install'
++ curl -vu ****:**** -X POST 'http://192.168.189.36:4502/crx/packmgr/service/.json/etc/packages/bbt/bbt-platform-ui-1.0.0-SNAPSHOT.zip?cmd=install'
 * About to connect() to 192.168.189.36 port 4502 (#0)
 *   Trying 192.168.189.36...
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -208,20 +208,20 @@ Found Module: bbt-platform-ui, packaging is: content-package
 
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to 192.168.189.36 (192.168.189.36) port 4502 (#0)
 * Server auth using Basic with user '****'
-> POST /crx/packmgr/service/.json/etc/packages/bbt/bbt-platform/bbt-platform-ui-1.0.0-SNAPSHOT.zip?cmd=install HTTP/1.1
+> POST /crx/packmgr/service/.json/etc/packages/bbt/bbt-platform-ui-1.0.0-SNAPSHOT.zip?cmd=install HTTP/1.1
 > Authorization: Basic ZGVwbG95ZXI6ZGVwbG95ZXI=
 > User-Agent: curl/7.29.0
 > Host: 192.168.189.36:4502
 > Accept: */*
 > 
 < HTTP/1.1 200 OK
-< Date: Tue, 06 Feb 2018 23:29:07 GMT
+< Date: Tue, 06 Feb 2018 23:47:02 GMT
 < Content-Type: application/json; charset=utf-8
 < Content-Length: 36
 < 
 { [data not shown]
 
-100    36  100    36    0     0   4468      0 --:--:-- --:--:-- --:--:--  5142
+100    36  100    36    0     0   5066      0 --:--:-- --:--:-- --:--:--  6000
 * Connection #0 to host 192.168.189.36 left intact
 [Pipeline] readJSON
 [Pipeline] error
