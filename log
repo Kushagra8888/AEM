@@ -1,14 +1,14 @@
 [Pipeline] properties
 [Pipeline] node
-Running on prd-vcijtls01.bbtnet.com in /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA
+Running on prd-vcijtls01.bbtnet.com in /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ
 [Pipeline] {
 [Pipeline] stage
 [Pipeline] { (Checkout)
-Setting origin to ssh://gerrit.bbtnet.com:29418/aem-platform
+Setting origin to ssh://gerrit.bbtnet.com:29418/aem-foundation
 Fetching origin...
 [Pipeline] checkout
 Fetching changes from the remote Git repository
-Checking out Revision 5996a6e0440ee98daba5f851649d09dffed1c6e1 (develop)
+Checking out Revision abd338084f4c614a352379d592738db6dabdf047 (develop)
 [Pipeline] readMavenPom
 [Pipeline] }
 [Pipeline] // stage
@@ -21,116 +21,171 @@ mvnHome = /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.3.
 [Pipeline] {
 [Pipeline] wrap
 provisioning config files...
-copy managed file [MyGlobalSettings] to file:/var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA@tmp/config649630657299998716tmp
+copy managed file [MyGlobalSettings] to file:/var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ@tmp/config2307450884590460614tmp
 [Pipeline] {
 [Pipeline] sh
-[M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA] Running shell script
-+ /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.3.x/apache-maven-3.3.9/bin/mvn -s /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA@tmp/config649630657299998716tmp clean package
+[undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ] Running shell script
++ /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.3.x/apache-maven-3.3.9/bin/mvn -s /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ@tmp/config2307450884590460614tmp clean package
 [INFO] Scanning for projects...
-[WARNING] 
-[WARNING] Some problems were encountered while building the effective model for com.bbt.platform:bbt-platform-core:bundle:1.0.0-SNAPSHOT
-[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ com.bbt.platform:bbt-platform-core:[unknown-version], /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/core/pom.xml, line 20, column 21
-[WARNING] 
-[WARNING] Some problems were encountered while building the effective model for com.bbt.platform:bbt-platform-ui:content-package:1.0.0-SNAPSHOT
-[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-resources-plugin is missing. @ com.bbt.platform:bbt-platform-ui:[unknown-version], /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/ui/pom.xml, line 149, column 21
-[WARNING] 
-[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
-[WARNING] 
-[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
-[WARNING] 
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Build Order:
 [INFO] 
-[INFO] BB&T Platform
-[INFO] BB&T Platform Core
-[INFO] BB&T Platform UI
+[INFO] bbtglobal
+[INFO] bbtglobal - Core
+[INFO] bbtglobal - UI apps
+[INFO] bbtglobal - UI content
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building BB&T Platform 1.0.0-SNAPSHOT
+[INFO] Building bbtglobal 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] 
-[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ bbt-platform ---
+[INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ bbtglobal ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-maven) @ bbtglobal ---
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building BB&T Platform Core 1.0.0-SNAPSHOT
+[INFO] Building bbtglobal - Core 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] 
-[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ bbt-platform-core ---
-[INFO] Deleting /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/core/target
+[INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ bbtglobal.core ---
+[INFO] Deleting /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/core/target
 [INFO] 
-[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ bbt-platform-core ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/core/src/main/resources
+[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-maven) @ bbtglobal.core ---
 [INFO] 
-[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ bbt-platform-core ---
+[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ bbtglobal.core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/core/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:compile (default-compile) @ bbtglobal.core ---
 [INFO] Changes detected - recompiling the module!
-[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
-[INFO] Compiling 158 source files to /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/core/target/classes
-[INFO] /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/core/src/main/java/com/bbt/platform/sling/adapters/LinkAdapterFactory.java: Some input files use unchecked or unsafe operations.
-[INFO] /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/core/src/main/java/com/bbt/platform/sling/adapters/LinkAdapterFactory.java: Recompile with -Xlint:unchecked for details.
+[INFO] Compiling 68 source files to /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/core/target/classes
+[INFO] /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/core/src/main/java/com/bbt/aem/global/core/workflows/process/impl/AkamaiCacheClearanceProcess.java: Some input files use or override a deprecated API.
+[INFO] /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/core/src/main/java/com/bbt/aem/global/core/workflows/process/impl/AkamaiCacheClearanceProcess.java: Recompile with -Xlint:deprecation for details.
+[INFO] /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/core/src/main/java/com/bbt/aem/global/core/workflows/commons/impl/WorkflowPackageManagerImpl.java: /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/core/src/main/java/com/bbt/aem/global/core/workflows/commons/impl/WorkflowPackageManagerImpl.java uses unchecked or unsafe operations.
+[INFO] /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/core/src/main/java/com/bbt/aem/global/core/workflows/commons/impl/WorkflowPackageManagerImpl.java: Recompile with -Xlint:unchecked for details.
 [INFO] 
-[INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ bbt-platform-core ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/core/src/test/resources
+[INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ bbtglobal.core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/core/src/test/resources
 [INFO] 
-[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ bbt-platform-core ---
-[INFO] No sources to compile
+[INFO] --- maven-compiler-plugin:3.6.1:testCompile (default-testCompile) @ bbtglobal.core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/core/target/test-classes
 [INFO] 
-[INFO] --- maven-surefire-plugin:2.20.1:test (default-test) @ bbt-platform-core ---
-[INFO] No tests to run.
+[INFO] --- maven-surefire-plugin:2.20:test (default-test) @ bbtglobal.core ---
 [INFO] 
-[INFO] --- maven-bundle-plugin:3.2.0:bundle (default-bundle) @ bbt-platform-core ---
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.bbt.aem.global.core.models.TestHelloWorldModel
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.475 s - in com.bbt.aem.global.core.models.TestHelloWorldModel
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- maven-bundle-plugin:3.3.0:bundle (default-bundle) @ bbtglobal.core ---
+[WARNING] Bundle com.bbt.aem:bbtglobal.core:bundle:1.0-SNAPSHOT : aQute.bnd.annotation.ProviderType annotation used in class com.bbt.aem.global.core.helpers.WorkflowHelper. Bnd versioning annotations are deprecated as of Bnd 3.2 and support will be removed in Bnd 4.0. Please change to use OSGi versioning annotations.
+[WARNING] Bundle com.bbt.aem:bbtglobal.core:bundle:1.0-SNAPSHOT : aQute.bnd.annotation.ProviderType annotation used in class com.bbt.aem.global.core.workflows.commons.WorkflowPackageManager. Bnd versioning annotations are deprecated as of Bnd 3.2 and support will be removed in Bnd 4.0. Please change to use OSGi versioning annotations.
+[WARNING] Bundle com.bbt.aem:bbtglobal.core:bundle:1.0-SNAPSHOT : Export com.microsoft.azure.keyvault,  has 1,  private references [org.apache.http.impl.client], 
+[WARNING] Bundle com.bbt.aem:bbtglobal.core:bundle:1.0-SNAPSHOT : Export com.microsoft.azure.keyvault.authentication,  has 3,  private references [org.apache.http.impl.auth, org.apache.http.impl.client, org.apache.http.auth], 
+[WARNING] Bundle com.bbt.aem:bbtglobal.core:bundle:1.0-SNAPSHOT : Export com.microsoft.windowsazure.core,  has 1,  private references [org.apache.http.impl.client], 
+[WARNING] Bundle com.bbt.aem:bbtglobal.core:bundle:1.0-SNAPSHOT : Export com.microsoft.windowsazure.core.pipeline.apache,  has 2,  private references [org.apache.http.impl.client, org.apache.http.client.methods], 
+[WARNING] Bundle com.bbt.aem:bbtglobal.core:bundle:1.0-SNAPSHOT : Export com.bbt.aem.global.core.workflows.process.impl,  has 1,  private references [com.google.gson], 
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
-[INFO] Building BB&T Platform UI 1.0.0-SNAPSHOT
+[INFO] Building bbtglobal - UI apps 1.0-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 [INFO] 
-[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ bbt-platform-ui ---
-[INFO] Deleting /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/ui/target
+[INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ bbtglobal.ui.apps ---
+[INFO] Deleting /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/ui.apps/target
 [INFO] 
-[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ bbt-platform-ui ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] Copying 212 resources
-[INFO] Copying 2 resources to ../vault-work/META-INF/vault/definition
-[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/ui/src/main/resources/META-INF
+[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-maven) @ bbtglobal.ui.apps ---
 [INFO] 
-[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ bbt-platform-ui ---
-[INFO] No sources to compile
+[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ bbtglobal.ui.apps ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 499 resources
 [INFO] 
-[INFO] --- content-package-maven-plugin:0.0.24:check-signature (default-check-signature) @ bbt-platform-ui ---
+[INFO] --- maven-compiler-plugin:3.6.1:compile (default-compile) @ bbtglobal.ui.apps ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/ui.apps/target/classes
+[INFO] 
+[INFO] --- htl-maven-plugin:1.0.6:validate (default) @ bbtglobal.ui.apps ---
+[INFO] Processed 53 files in 707 milliseconds
+[INFO] 
+[INFO] --- content-package-maven-plugin:0.5.1:check-signature (default-check-signature) @ bbtglobal.ui.apps ---
 [INFO] No signature defined. Skipping signature check.
 [INFO] 
-[INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ bbt-platform-ui ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/ui/src/test/resources
+[INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ bbtglobal.ui.apps ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/ui.apps/src/test/resources
 [INFO] 
-[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ bbt-platform-ui ---
+[INFO] --- maven-compiler-plugin:3.6.1:testCompile (default-testCompile) @ bbtglobal.ui.apps ---
 [INFO] No sources to compile
 [INFO] 
-[INFO] --- maven-surefire-plugin:2.20.1:test (default-test) @ bbt-platform-ui ---
+[INFO] --- maven-surefire-plugin:2.20:test (default-test) @ bbtglobal.ui.apps ---
 [INFO] No tests to run.
 [INFO] 
-[INFO] --- content-package-maven-plugin:0.0.24:package (default-package) @ bbt-platform-ui ---
-[INFO] Embedding --- Embedded: groupId=com.bbt.platform,artifactId=bbt-platform-core,filter=false,excludeTransitive=false,target=/apps/bbt/platform/install/ ---
-[INFO] Embedding com.bbt.platform:bbt-platform-core:jar:1.0.0-SNAPSHOT (from /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/core/target/bbt-platform-core-1.0.0-SNAPSHOT.jar) -> jcr_root/apps/bbt/platform/install/bbt-platform-core-1.0.0-SNAPSHOT.jar
-[INFO] Embedding --- Embedded: groupId=com.icfolson.aem,artifactId=multicomposite-addon,filter=false,excludeTransitive=false,target=/apps/bbt/platform/install/ ---
-[INFO] Embedding com.icfolson.aem:multicomposite-addon:jar:3.2.1 (from /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/.repository/com/icfolson/aem/multicomposite-addon/3.2.1/multicomposite-addon-3.2.1.jar) -> jcr_root/apps/bbt/platform/install/multicomposite-addon-3.2.1.jar
-[INFO] Merging /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/ui/src/main/content/META-INF/vault/filter.xml with inlined filter specifications.
-[INFO] Building content-package: /var/lib/jenkins/workspace/M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA/ui/target/bbt-platform-ui-1.0.0-SNAPSHOT.zip
+[INFO] --- content-package-maven-plugin:0.5.1:package (default-package) @ bbtglobal.ui.apps ---
+[INFO] Embedding --- Embedded: groupId=com.bbt.aem,artifactId=bbtglobal.core,filter=false,excludeTransitive=false,target=/apps/bbt/bbtglobal/install/ ---
+[INFO] Embedding com.bbt.aem:bbtglobal.core:jar:1.0-SNAPSHOT (from /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/core/target/bbtglobal.core-1.0-SNAPSHOT.jar) -> jcr_root/apps/bbt/bbtglobal/install/bbtglobal.core-1.0-SNAPSHOT.jar
+[INFO] Embedding --- Embedded: groupId=com.github.mickleroy,artifactId=aem-sass-compiler,filter=false,excludeTransitive=false,target=/apps/bbt/bbtglobal/install/ ---
+[INFO] Embedding com.github.mickleroy:aem-sass-compiler:jar:1.0.3 (from /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/.repository/com/github/mickleroy/aem-sass-compiler/1.0.3/aem-sass-compiler-1.0.3.jar) -> jcr_root/apps/bbt/bbtglobal/install/aem-sass-compiler-1.0.3.jar
+[INFO] Embedding --- Sub Packages: groupId=com.adobe.cq,artifactId=core.wcm.components.all,filter=true,excludeTransitive=false ---
+[INFO] Embedding com.adobe.cq:core.wcm.components.all:zip:1.1.0 -> jcr_root/etc/packages/adobe/cq60/core.wcm.components.all-1.1.0.zip
+[INFO] Embedding --- Sub Packages: groupId=com.adobe.acs,artifactId=acs-aem-commons-content,filter=true,excludeTransitive=false ---
+[INFO] Embedding com.adobe.acs:acs-aem-commons-content:content-package:min:3.13.0 -> jcr_root/etc/packages/adobe/consulting/acs-aem-commons-content-3.13.0.zip
+[INFO] Merging /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/ui.apps/src/main/content/META-INF/vault/filter.xml with inlined filter specifications.
+[INFO] Building content-package: /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/ui.apps/target/bbtglobal.ui.apps-1.0-SNAPSHOT.zip
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building bbtglobal - UI content 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
 [INFO] 
-[INFO] --- cq-component-maven-plugin:5.0.2:component (default) @ bbt-platform-ui ---
+[INFO] --- maven-clean-plugin:3.0.0:clean (default-clean) @ bbtglobal.ui.content ---
+[INFO] Deleting /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/ui.content/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-maven) @ bbtglobal.ui.content ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:resources (default-resources) @ bbtglobal.ui.content ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 62 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:compile (default-compile) @ bbtglobal.ui.content ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- content-package-maven-plugin:0.5.1:check-signature (default-check-signature) @ bbtglobal.ui.content ---
+[INFO] No signature defined. Skipping signature check.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.0.2:testResources (default-testResources) @ bbtglobal.ui.content ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/ui.content/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.6.1:testCompile (default-testCompile) @ bbtglobal.ui.content ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.20:test (default-test) @ bbtglobal.ui.content ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- content-package-maven-plugin:0.5.1:package (default-package) @ bbtglobal.ui.content ---
+[INFO] Embedding --- Embedded: groupId=com.bbt.aem,artifactId=bbtglobal.core,filter=false,excludeTransitive=false,target=/apps/bbtglobal/install/ ---
+[INFO] Embedding com.bbt.aem:bbtglobal.core:jar:1.0-SNAPSHOT (from /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/core/target/bbtglobal.core-1.0-SNAPSHOT.jar) -> jcr_root/apps/bbtglobal/install/bbtglobal.core-1.0-SNAPSHOT.jar
+[INFO] Merging /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/ui.content/src/main/content/META-INF/vault/filter.xml with inlined filter specifications.
+[INFO] Building content-package: /var/lib/jenkins/workspace/undation_Foundation_develop-S2TPMGIGOYH3CVU6ABW23WRVINXMXOLC7N2Z42XWPGODGDN2K4AQ/ui.content/target/bbtglobal.ui.content-1.0-SNAPSHOT.zip
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary:
 [INFO] 
-[INFO] BB&T Platform ...................................... SUCCESS [  0.045 s]
-[INFO] BB&T Platform Core ................................. SUCCESS [  3.167 s]
-[INFO] BB&T Platform UI ................................... SUCCESS [  2.696 s]
+[INFO] bbtglobal .......................................... SUCCESS [  0.194 s]
+[INFO] bbtglobal - Core ................................... SUCCESS [  5.865 s]
+[INFO] bbtglobal - UI apps ................................ SUCCESS [  2.716 s]
+[INFO] bbtglobal - UI content ............................. SUCCESS [  0.241 s]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 6.828 s
-[INFO] Finished at: 2018-02-06T18:46:55-05:00
-[INFO] Final Memory: 71M/846M
+[INFO] Total time: 10.019 s
+[INFO] Finished at: 2018-02-07T17:37:46-05:00
+[INFO] Final Memory: 49M/846M
 [INFO] ------------------------------------------------------------------------
 [Pipeline] }
 Deleting 2 temporary files
@@ -152,79 +207,21 @@ Deleting 2 temporary files
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] echo
-Modules: [core, ui]
+Modules: [core, ui.apps, ui.content]
 [Pipeline] echo
 Reading pom: core/pom.xml
 [Pipeline] readMavenPom
-Found Module: bbt-platform-core, packaging is: bundle
 [Pipeline] echo
+Found Module: bbtglobal.core, packaging is: bundle
 [Pipeline] echo
-Reading pom: ui/pom.xml
+Reading pom: ui.apps/pom.xml
 [Pipeline] readMavenPom
 [Pipeline] echo
-Found Module: bbt-platform-ui, packaging is: content-package
+Found Module: bbtglobal.ui.apps, packaging is: content-package
 [Pipeline] stage
-[Pipeline] { (Upload and Install bbt-platform-ui to Dev Author Server)
+[Pipeline] { (Upload and Install bbtglobal.ui.apps to Dev Author Server)
 [Pipeline] withCredentials
 [Pipeline] {
-[Pipeline] sh
-[M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA] Running shell script
-+ curl -vu ****:**** -F force=true -F package=@ui/target/bbt-platform-ui-1.0.0-SNAPSHOT.zip 'http://192.168.189.36:4502/crx/packmgr/service/.json/?cmd=upload'
-* About to connect() to 192.168.189.36 port 4502 (#0)
-*   Trying 192.168.189.36...
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to 192.168.189.36 (192.168.189.36) port 4502 (#0)
-* Server auth using Basic with user '****'
-> POST /crx/packmgr/service/.json/?cmd=upload HTTP/1.1
-> Authorization: Basic ZGVwbG95ZXI6ZGVwbG95ZXI=
-> User-Agent: curl/7.29.0
-> Host: 192.168.189.36:4502
-> Accept: */*
-> Content-Length: 545048
-> Expect: 100-continue
-> Content-Type: multipart/form-data; boundary=----------------------------327e64dfa43f
-> 
-< HTTP/1.1 100 Continue
-} [data not shown]
-< HTTP/1.1 200 OK
-< Date: Tue, 06 Feb 2018 23:47:02 GMT
-< Content-Type: application/json; charset=utf-8
-< Content-Length: 112
-< 
-{ [data not shown]
-
-100  532k  100   112  100  532k   1816  8633k --:--:-- --:--:-- --:--:-- 8725k
-* Connection #0 to host 192.168.189.36 left intact
-[Pipeline] readJSON
-[Pipeline] sh
-[M-Platform_Platform_develop-S5KVJIGE36APEWA63BM6C73R7WLJCZMNSO54NUMX6CWM6AJ3MBCA] Running shell script
-+ curl -vu ****:**** -X POST 'http://192.168.189.36:4502/crx/packmgr/service/.json/etc/packages/bbt/bbt-platform-ui-1.0.0-SNAPSHOT.zip?cmd=install'
-* About to connect() to 192.168.189.36 port 4502 (#0)
-*   Trying 192.168.189.36...
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to 192.168.189.36 (192.168.189.36) port 4502 (#0)
-* Server auth using Basic with user '****'
-> POST /crx/packmgr/service/.json/etc/packages/bbt/bbt-platform-ui-1.0.0-SNAPSHOT.zip?cmd=install HTTP/1.1
-> Authorization: Basic ZGVwbG95ZXI6ZGVwbG95ZXI=
-> User-Agent: curl/7.29.0
-> Host: 192.168.189.36:4502
-> Accept: */*
-> 
-< HTTP/1.1 200 OK
-< Date: Tue, 06 Feb 2018 23:47:02 GMT
-< Content-Type: application/json; charset=utf-8
-< Content-Length: 36
-< 
-{ [data not shown]
-
-100    36  100    36    0     0   5066      0 --:--:-- --:--:-- --:--:--  6000
-* Connection #0 to host 192.168.189.36 left intact
-[Pipeline] readJSON
-[Pipeline] error
 [Pipeline] }
 [Pipeline] // withCredentials
 [Pipeline] }
@@ -232,5 +229,49 @@ Found Module: bbt-platform-ui, packaging is: content-package
 [Pipeline] }
 [Pipeline] // node
 [Pipeline] End of Pipeline
-ERROR: no package
+java.lang.NoSuchMethodError: No such DSL method 'jsonCurl' found among steps [AddInteractivePromotion, ArtifactoryGradleBuild, ArtifactoryMavenBuild, ConanAddRemote, ConanAddUser, InitConanClient, MavenDescriptorStep, RunConanCommand, acceptGitLabMR, addGitLabMRComment, ansiColor, archive, artifactoryDistributeBuild, artifactoryDownload, artifactoryPromoteBuild, artifactoryUpload, bat, build, catchError, checkout, checkpoint, collectEnv, deleteDir, deployArtifacts, dir, dockerFingerprintFrom, dockerFingerprintRun, dockerPullStep, dockerPushStep, echo, error, fileExists, findFiles, getArtifactoryServer, getContext, git, gitlabBuilds, gitlabCommitStatus, input, isUnix, libraryResource, load, mail, milestone, newArtifactoryServer, newBuildInfo, newGradleBuild, newMavenBuild, node, parallel, properties, publishBuildInfo, pwd, readFile, readJSON, readManifest, readMavenPom, readProperties, readTrusted, readYaml, retry, setGerritReview, sh, sha1, sleep, sshagent, stage, stash, step, svn, timeout, tool, touch, triggerRemoteJob, unarchive, unstash, unzip, updateGitlabCommitStatus, vSphere, waitUntil, withContext, withCredentials, withDockerContainer, withDockerRegistry, withDockerServer, withEnv, wrap, writeFile, writeJSON, writeMavenPom, writeYaml, ws, xrayScanBuild, zip] or symbols [ant, antFromApache, antOutcome, antTarget, changeAbandoned, changeMerged, changeRestored, commentAdded, commentAddedContains, configFile, configFileProvider, disableConcurrentBuilds, draftPublished, file, gerrit, git, gitLabConnection, gitlab, jgit, jgitapache, junit, overrideIndexTriggers, patchsetCreated, pipelineTriggers, refUpdated, sonarToGerrit, string, topicChanged, usernameColonPassword, usernamePassword, zip] or globals [Artifactory, currentBuild, docker, env, params, scm]
+	at org.jenkinsci.plugins.workflow.cps.DSL.invokeMethod(DSL.java:149)
+	at org.jenkinsci.plugins.workflow.cps.CpsScript.invokeMethod(CpsScript.java:108)
+	at groovy.lang.MetaClassImpl.invokeMethodOnGroovyObject(MetaClassImpl.java:1144)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1038)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:903)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:723)
+	at groovy.lang.GroovyObjectSupport.invokeMethod(GroovyObjectSupport.java:44)
+	at groovy.lang.MetaClassImpl.invokeMethodOnGroovyObject(MetaClassImpl.java:1144)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1038)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:903)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaClassSite.call(PogoMetaClassSite.java:39)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:42)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:108)
+	at com.cloudbees.groovy.cps.sandbox.DefaultInvoker.methodCall(DefaultInvoker.java:18)
+	at WorkflowScript.upload(WorkflowScript:86)
+	at ___cps.transform___(Native Method)
+	at com.cloudbees.groovy.cps.impl.ContinuationGroup.methodCall(ContinuationGroup.java:57)
+	at com.cloudbees.groovy.cps.impl.FunctionCallBlock$ContinuationImpl.dispatchOrArg(FunctionCallBlock.java:109)
+	at com.cloudbees.groovy.cps.impl.FunctionCallBlock$ContinuationImpl.fixArg(FunctionCallBlock.java:82)
+	at sun.reflect.GeneratedMethodAccessor362.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at com.cloudbees.groovy.cps.impl.ContinuationPtr$ContinuationImpl.receive(ContinuationPtr.java:72)
+	at com.cloudbees.groovy.cps.impl.LocalVariableBlock$LocalVariable.get(LocalVariableBlock.java:39)
+	at com.cloudbees.groovy.cps.LValueBlock$GetAdapter.receive(LValueBlock.java:30)
+	at com.cloudbees.groovy.cps.impl.LocalVariableBlock.evalLValue(LocalVariableBlock.java:28)
+	at com.cloudbees.groovy.cps.LValueBlock$BlockImpl.eval(LValueBlock.java:55)
+	at com.cloudbees.groovy.cps.LValueBlock.eval(LValueBlock.java:16)
+	at com.cloudbees.groovy.cps.Next.step(Next.java:58)
+	at com.cloudbees.groovy.cps.Continuable.run0(Continuable.java:154)
+	at org.jenkinsci.plugins.workflow.cps.CpsThread.runNextChunk(CpsThread.java:163)
+	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup.run(CpsThreadGroup.java:324)
+	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup.access$100(CpsThreadGroup.java:78)
+	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$2.call(CpsThreadGroup.java:236)
+	at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$2.call(CpsThreadGroup.java:224)
+	at org.jenkinsci.plugins.workflow.cps.CpsVmExecutorService$2.call(CpsVmExecutorService.java:63)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at hudson.remoting.SingleLaneExecutorService$1.run(SingleLaneExecutorService.java:112)
+	at jenkins.util.ContextResettingExecutorService$1.run(ContextResettingExecutorService.java:28)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
 Finished: FAILURE
