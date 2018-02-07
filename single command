@@ -1,0 +1,10 @@
+curl -u admin:admin -F file=@"name of zip file" -F name="name of package" -F force=true -F install=true http://localhost:4505/crx/packmgr/service.jsp
+
+
+
+stage("Upload and Install ${artifactId} to Dev Author Server") {
+   withCredentials([usernamePassword(credentialsId: 'AEM-DEV-AUTHOR-SERVER', usernameVariable: 'AEM_USERNAME', passwordVariable: 'AEM_PASSWORD')]) {
+     jsonCurl("http://192.168.189.36:4502/crx/packmgr/service/.json/?cmd=upload", false, filename)
+      jsonCurl("http://192.168.189.36:4502/crx/packmgr/service/.json/etc/packages/bbt/${*}/${artifactId}-${version}.zip?cmd=install", true)
+    }
+  }
