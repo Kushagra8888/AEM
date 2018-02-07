@@ -82,15 +82,14 @@ def upload(String parent_artifactId, String artifactId, String version, String f
 
   stage("Upload and Install ${artifactId} to Dev Author Server") {
     withCredentials([usernamePassword(credentialsId: 'AEM-DEV-AUTHOR-SERVER', usernameVariable: 'AEM_USERNAME', passwordVariable: 'AEM_PASSWORD')]) {
-      jsonCurl("http://192.168.189.36:4502/crx/packmgr/service/.json/?cmd=upload", false, filename)
-      jsonCurl("http://192.168.189.36:4502/crx/packmgr/service/.json/etc/packages/bbt/${artifactId}-${version}.zip?cmd=install", true)
+      jsonCurl("http://172.30.16.32:4503/crx/packmgr/service/.json/etc/packages/bbt/${*}/${artifactId}-${version}.zip?cmd=install", true)
     }
   }
 
   stage("Upload and Install ${artifactId} to Dev Publish Server") {
     withCredentials([usernamePassword(credentialsId: 'AEM-DEV-PUBLISH-SERVER', usernameVariable: 'AEM_USERNAME', passwordVariable: 'AEM_PASSWORD')]) {
-      jsonCurl("http://172.30.16.32:4503/crx/packmgr/service/.json/?cmd=upload", false, filename)
-      jsonCurl("http://172.30.16.32:4503/crx/packmgr/service/.json/etc/packages/bbt/${artifactId}-${version}.zip?cmd=install", true)
+      //jsonCurl("http://172.30.16.32:4503/crx/packmgr/service/.json/?cmd=upload", false, filename)
+      //jsonCurl("http://172.30.16.32:4503/crx/packmgr/service/.json/etc/packages/bbt/${artifactId}-${version}.zip?cmd=install", true)
     }
   }
 }
