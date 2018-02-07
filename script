@@ -1,0 +1,109 @@
+def GIT_TAG
+properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10']], gitLabConnection('GitLabProd'), pipelineTriggers([])])
+node('linux') {
+  stage("Checkout") {
+    checkout scm
+    def pom = readMavenPom file: "pom.xml"
+    def version = pom.getVersion();
+    def date = (new Date()).format('MM-dd-YYYY-HHMMSS', TimeZone.getTimeZone('EST'));
+    GIT_TAG = (version =~ /(\d+\.\d+)-SNAPSHOT.*/)[0][1] + "-" + date + "-" + BUILD_ID;
+
+  
+    
+  }
+  stage("Build and Test") {
+    def mvnHome = tool 'Maven 3.3.x'
+    echo "mvnHome = ${mvnHome}"
+    def target = "package"
+    if (env.BRANCH_NAME =~ /master/) {
+      target = "deploy"
+    }
+
+    withCredentials([usernamePassword(credentialsId: '16476885-66c9-4965-8fde-3d64ffff02b1', usernameVariable: 'MAVEN.USERNAME', passwordVariable: 'MAVEN.PASSWORD')]) {
+
+      configFileProvider(
+          [configFile(fileId: 'org.jenkinsci.plugins.configfiles.maven.GlobalMavenSettingsConfig1429132350345', variable: 'MAVEN_SETTINGS')]) {
+          sh "${mvnHome}/bin/mvn -s $MAVEN_SETTINGS clean ${target}"
+      }
+    }
+  }
+  stage("Dev branch = Archive/Master = Deploy Artifacts ") {
+      archive(includes: "**/target/*.zip,**/target/*.jar,**/target/*.war")
+     // step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+  }
+
+    def parent_artifactId;
+     def version;
+     def groupId;
+     def modules;
+
+     if (env.BRANCH_NAME =~ /develop/){
+      properties([gitLabConnection('GitLabProd'), pipelineTriggers([[$class: 'TimerTrigger', spec: '0 6,15 * * *']])])
+      properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10']], gitLabConnection('GitLabProd'), pipelineTriggers([])])
+      stage('Read Pom') {
+       def pom = readMavenPom(file: 'pom.xml');
+       modules = pom.modules;
+       parent_artifactId = pom.artifactId;
+       version = pom.version;
+       groupId = pom.groupId.replaceAll("[.]", "/");
+      }
+
+     print "Modules: ${modules}";
+     for (String module : modules) {
+      print("Reading pom: ${module}/pom.xml");
+      pom = readMavenPom(file: "${module}/pom.xml");
+      print("Found Module: ${pom.artifactId}, packaging is: ${pom.packaging}");
+      def artifactId = pom.artifactId;      
+      if (pom.packaging == "content-package" && !(artifactId =~ /ui.content$/)) {
+        def filename = "${module}/target/${artifactId}-${version}.zip"      
+         upload(parent_artifactId, artifactId, version, filename);
+      }
+    }
+    }
+}
+
+def jsonCurl(String url, boolean post = false, String filename = "") {
+  def request = "curl -vu \"${AEM_USERNAME}:${AEM_PASSWORD}\" "
+  if (filename != "") {
+    request += "-F force=true -F \"package=@${filename}\" "
+  }
+  if (post) {
+    request += "-X POST "
+  }
+  request += url
+  def response = sh(script: "$request", returnStdout: true)
+  def json = readJSON(text: response)
+  if (json["success"] == false) {
+    error(message: json["msg"])
+  }
+}
+
+def upload(String parent_artifactId, String artifactId, String version, String filename) {
+
+  stage("Upload and Install ${artifactId} to Dev Author Server") {
+    withCredentials([usernamePassword(credentialsId: 'AEM-DEV-AUTHOR-SERVER', usernameVariable: 'AEM_USERNAME', passwordVariable: 'AEM_PASSWORD')]) {
+      jsonCurl("http://192.168.189.36:4502/crx/packmgr/service/.json/?cmd=upload", false, filename)
+      jsonCurl("http://192.168.189.36:4502/crx/packmgr/service/.json/etc/packages/bbt/${artifactId}-${version}.zip?cmd=install", true)
+    }
+  }
+
+  stage("Upload and Install ${artifactId} to Dev Publish Server") {
+    withCredentials([usernamePassword(credentialsId: 'AEM-DEV-PUBLISH-SERVER', usernameVariable: 'AEM_USERNAME', passwordVariable: 'AEM_PASSWORD')]) {
+      jsonCurl("http://172.30.16.32:4503/crx/packmgr/service/.json/?cmd=upload", false, filename)
+      jsonCurl("http://172.30.16.32:4503/crx/packmgr/service/.json/etc/packages/bbt/${artifactId}-${version}.zip?cmd=install", true)
+    }
+  }
+}
+if (env.BRANCH_NAME =~ /master/) {
+stage ('Tag Build') {
+node ('chefdk')  {   
+    checkout scm  
+    sh """
+      git config --global user.email "bcb-admins@bbandt.com"
+      git config --global user.name "Jenkins Automation"
+      git tag -a $GIT_TAG -m "Version created by Jenkins Build" 
+      git push origin $GIT_TAG
+    """
+  }
+ }
+}
