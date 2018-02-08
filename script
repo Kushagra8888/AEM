@@ -62,13 +62,19 @@ node('linux') {
     }
 }
 
-def jsonCurl(String url, boolean post = false, String filename = "") {
+def jsonCurl(String url, boolean post = false, String filename = "", String fileNameWithoutPath = "", boolean install = false) {
   def request = "curl -vu \"${AEM_USERNAME}:${AEM_PASSWORD}\" "
   if (filename != "") {
     request += "-F force=true -F \"package=@${filename}\" "
   }
+  if (fileNameWithoutPath != "") {
+    request += "-F force=true -F \"file=${fileNameWithoutPath}\" "
+  }
   if (post) {
     request += "-X POST "
+  }
+  if (install) {
+    request += "-F install=true "
   }
   request += url
   def response = sh(script: "$request", returnStdout: true)
@@ -83,6 +89,8 @@ def upload(String parent_artifactId, String artifactId, String version, String f
     withCredentials([usernamePassword(credentialsId: 'AEM-DEV-AUTHOR-SERVER', usernameVariable: 'AEM_USERNAME', passwordVariable: 'AEM_PASSWORD')]) {
       //jsonCurl("http://192.168.189.36:4502/crx/packmgr/service/.json/?cmd=upload", false, filename)
       //jsonCurl("http://192.168.189.36:4502/crx/packmgr/service/.json/etc/packages/bbt/${*}/${artifactId}-${version}.zip?cmd=install", true)
+      fileNameWithoutPath = filename.split("/").last()
+      jsonCurl("http://localhost:4502/crx/packmgr/service.jsp", true, filename, fileNameWithoutPath, true)
     }
   }
 
